@@ -1,0 +1,21 @@
+<html>
+   <body>
+      <h1>resum.ai</h1>
+      <h4>Upload your resume and receive related keywords based on other resumes previously submitted.</h4>
+      <h2>How It Works</h2>
+      <p>Every resume submitted is added to the dataset for future queries. To find suggestions, each set of resumes containing its
+         parsed keywords are fed into the Apriori algorithm. Returned are a list of rules with a minimum support and confidence constraint.</p>
+          <p>Each rule containing a new word is then given a score, calculated by summing up the support * confidence of all rules that favour the word.
+          All words that pass a certain score threshold is then returned. If no words pass the score threshold, your resume is significantly different from all other resumes in the dataset, and will not have any recommendations. However, it will help future resumes with similar words!
+      </p>
+      <form action = "/upload" method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+
+      <div id="results">
+
+      </div>
+   </body>
+</html>
