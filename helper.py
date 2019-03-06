@@ -25,7 +25,10 @@ def parse_resume(file):
     page = set([x.lower() for x in word_tokenize(page.translate(table))])
 
     words = set([x for x in page - stop_words if (not any(c.isdigit() for c in x) and len(x) > 1)])
+    if len(words) < 10:
+        return False
 
+    set_resume(words)
     return words
 
 
@@ -67,11 +70,9 @@ def get_scores(transactions, resume_words):
 
 def get_suggestions(resume_file):
     curr_resume = parse_resume(resume_file)
-    if len(curr_resume) < 10:
+    if not curr_resume:
         return {"ERROR: ": "Resume could not be parsed. This may be due to the font, or compression of the file."}
     transactions = build_transaction_matrix()
     scores = get_scores(transactions, curr_resume)
-    set_resume(curr_resume)
-
     return list(scores.keys())
 
