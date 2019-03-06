@@ -9,7 +9,7 @@ from nltk.corpus import stopwords
 import PyPDF2
 
 
-r = redis.StrictRedis(host='localhost', port=6379, db=0, charset="utf-8", decode_responses=True)
+r = redis.StrictRedis(host='ec2-3-208-118-12.compute-1.amazonaws.com', port=28069, password='pb07233ae908a5a1391478380668e68d52cfa102eb9a867f81c9c5dcdece9289c', db=0, charset="utf-8", decode_responses=True)
 r.setnx("resume_id", 1)
 
 
