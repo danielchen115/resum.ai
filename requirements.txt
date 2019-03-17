@@ -16,3 +16,4 @@ singledispatch==3.4.0.3
 six==1.12.0
 Werkzeug==0.14.1
 gunicorn==19.9.0
+pyfpgrowth==1.0
